@@ -1,11 +1,8 @@
 function attemptFetchMatchingBuild() {
     console.log('attemptFetchMatchingBuild running...');
 
-    // let urlParts = location.href.split('/');
-    // let pipelineNumber = urlParts[urlParts.length - 1];
-    // let build = fetchMatchingBuild(pipelineNumber);
-
-    return fetchAllBuilds()[0];
+    let pipelineNumber = location.href.match(/\/(\d+)\/?$/)[1];
+    let build = fetchMatchingBuild(pipelineNumber);
 
     console.log(`attemptFetchMatchingBuild complete (${build.toString()})!`);
     return build;
