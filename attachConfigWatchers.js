@@ -92,9 +92,9 @@ function runPipelineOnClick() {
 function attachConfigWatchers() {
     console.log('attachConfigWatchers running...');
     watchRunPipelinePress();
-    createFakeRunPipelineButton();
-    createConfirmRunButton();
-    createViewBuildsButton();
+    // createFakeRunPipelineButton();
+    // createConfirmRunButton();
+    // createViewBuildsButton();
     console.log('attachConfigWatchers complete!');
 }
 
