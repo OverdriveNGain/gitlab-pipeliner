@@ -26,9 +26,14 @@ function fetchLatestBuild() {
 }
 
 function fetchMatchingBuild(pipelineNumber) {
-    console.log('fetchMatchingBuild running...');
+    console.log(`fetchMatchingBuild running (${pipelineNumber})...`);
     let buildsJsonText = localStorage.getItem('gitlab-pipeline-runs') ?? '[]';
     let buildsJson = JSON.parse(buildsJsonText);
+
+    console.log('pipelineNumbers: ');
+    buildsJson.forEach((build) => {
+        console.log(build['pipeline-number']);
+    });
 
     let latestBuild = buildsJson.find((build) => build['pipeline-number'] === pipelineNumber);
 
@@ -43,14 +48,19 @@ function fetchAllBuilds() {
 }
 
 function savePipelineUrlToBuild(pipelineUrl, buildUuid) {
-    console.log('savePipelineUrlToBuild running...');
+    console.log(`savePipelineUrlToBuild running... (${pipelineUrl}, ${buildUuid})`);
     let buildsJsonText = localStorage.getItem('gitlab-pipeline-runs') ?? '[]';
+
+    console.log(`buildsJsonText: ${buildsJsonText}`);
+
     let buildsJson = JSON.parse(buildsJsonText);
+
+    console.log(`buildsJsonLength: ${buildsJson.length}`);
 
     buildsJson.forEach((build) => {
         if (build.id === buildUuid) {
             build['pipeline-url'] = pipelineUrl;
-            console.log(`Set pipeline-url to ${pipelinUrl}!`);
+            console.log(`Set pipeline-url to ${pipelineUrl}!`);
             let matches = pipelineUrl.match(/\/(\d+)\/?$/);
             if (matches !== null) {
                 build['pipeline-number'] = matches[1];

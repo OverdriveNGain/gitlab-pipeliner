@@ -1,6 +1,8 @@
 function updateLatestBuildUrl() {
     console.log('updateLatestBuildUrl running...');
-    let build = fetchLatestBuild;
+    let build = fetchLatestBuild();
+    console.log('Latest build: ');
+    console.log(JSON.stringify(build));
     savePipelineUrlToBuild(location.href, build['id']);
     console.log('updateLatestBuildUrl complete!');
 }
