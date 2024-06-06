@@ -27,11 +27,21 @@ async function injectBuildConfigData(build) {
             let key = keyValue[0];
             let value = keyValue[1];
 
-            if (!key || !value)
+            if (!key)
                 continue;
 
             let li = document.createElement('li');
-            li.textContent = `${key}: ${value}`;
+            
+            let span1 = document.createElement('span');
+            span1.textContent = key;
+            li.appendChild(span1);
+            li.appendChild(document.createTextNode(': '));
+
+            let span2 = document.createElement('span');
+            span2.style.color = 'red';
+            span2.textContent = value;
+            li.appendChild(span2);
+
             ul.appendChild(li);
         }
         tabElement.insertAdjacentElement('beforeend', ul);
