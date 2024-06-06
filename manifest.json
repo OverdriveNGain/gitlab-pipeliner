@@ -10,6 +10,7 @@
       "js": [
         "attachConfigWatchers.js",
         "confirmPipelineRun.js",
+        "attemptInjectionConfig.js",
         "storage.js",
         "content.js"
       ]

@@ -27,7 +27,8 @@ function confirmPipelineRun() {
 
 function pageIsPipelineProgress() {
     console.log('pageIsPipelineProgress running...');
-    let value = location.href.startsWith('https://gitlab') && location.href.endsWith('/pipelines/') && /^\d+$/.test(location.href.split('/').pop());
+    let value = location.href.startsWith('https://gitlab') 
+        && /\d+\/?$/.test(location.href);
     console.log(`pageIsPipelineProgress complete (${value})!`);
     return value;
 }

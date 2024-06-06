@@ -4,5 +4,5 @@ if (pageIsPipelineConfigs()) {
 else if (pageIsPipelineProgress()) {
     if (pipelineProgressPageIsFresh())
         confirmPipelineRun();
-    attemptInjectConfig();
+    attemptInjectionConfig();
 }

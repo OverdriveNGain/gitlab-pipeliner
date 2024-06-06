@@ -18,10 +18,21 @@ function fetchLatestBuild() {
     let buildsJson = JSON.parse(buildsJsonText);
 
     let latestBuild = buildsJson.reduce((prev, current) =>
-        current.unix_timestamp > prev.unix_timestamp ? current : prev
+        current['unix-timestamp'] > prev['unix-timestamp'] ? current : prev
     );
 
     console.log(`fetchLatestBuild complete (${latestBuild.toString()})!`);
+    return latestBuild;
+}
+
+function fetchMatchingBuild(pipelineNumber) {
+    console.log('fetchMatchingBuild running...');
+    let buildsJsonText = localStorage.getItem('gitlab-pipeline-runs') ?? '[]';
+    let buildsJson = JSON.parse(buildsJsonText);
+
+    let latestBuild = buildsJson.find((build) => build['pipeline-number'] === pipelineNumber);
+
+    console.log(`fetchMatchingBuild complete (${latestBuild.toString()})!`);
     return latestBuild;
 }
 
