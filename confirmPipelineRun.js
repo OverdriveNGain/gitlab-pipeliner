@@ -8,13 +8,17 @@ function updateLatestBuildUrl() {
 function pipelineProgressPageIsFresh() {
     console.log('pipelineProgressPageIsFresh running...');
     let repositoryName = document.querySelector('nav.breadcrumbs li:nth-last-child(3)').textContent.trim();
-    let branchName = document.querySelectorAll('[data-testid="cancel-pipeline"]');
+    let branchName = document.querySelector('a.ref-container').text.trim();
     let latestBuild = fetchLatestBuild();
 
+    // let value = latestBuild['repository-name'] === repositoryName
+    //     && latestBuild['branch-name'] === branchName
+    //     && Date.now() - latestBuild['unix-timestamp'] < 600000;
     let value = latestBuild['repository-name'] === repositoryName
         && latestBuild['branch-name'] === branchName
-        && Date.now() - latestBuild['unix-timestamp'] < 15000;
+        && Date.now() - latestBuild['unix-timestamp'] < 600000;
     
+    console.log(`${latestBuild['repository-name'] === repositoryName} && ${latestBuild['branch-name'] === branchName} && ${Date.now() - latestBuild['unix-timestamp'] < 600000}`);
     console.log(`pipelineProgressPageIsFresh complete (${value})!`);
     return value;
 }

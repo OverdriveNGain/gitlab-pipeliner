@@ -114,7 +114,7 @@ function attachConfigWatchers() {
 function pageIsPipelineConfigs() {
     console.log('pageIsPipelineConfigs running...');
     let h1 = document.querySelector('h1');
-    if (h1 === null)
+    if (h1 == null)
         return null;
     let value = h1.textContent !== null && h1.textContent.trim() === 'Run pipeline';
     console.log(`pageIsPipelineConfigs complete (${value})!`);

@@ -1,7 +1,7 @@
 function pushNewBuild(build) {
     console.log('pushNewBuild running...');
     let buildsJsonText = localStorage.getItem('gitlab-pipeline-runs');
-    if (buildsJsonText === null) {
+    if (buildsJsonText == null) {
         buildsJsonText = '[]';
     }
     let buildsJson = JSON.parse(buildsJsonText);
@@ -32,7 +32,7 @@ function fetchMatchingBuild(pipelineNumber) {
 
     let latestBuild = buildsJson.find((build) => build['pipeline-number'] === pipelineNumber);
 
-    console.log(`fetchMatchingBuild complete (${latestBuild.toString()})!`);
+    console.log(`fetchMatchingBuild complete (${latestBuild == null ? 'none' : latestBuild.toString()})!`);
     return latestBuild;
 }
 
@@ -50,11 +50,14 @@ function savePipelineUrlToBuild(pipelineUrl, buildUuid) {
     buildsJson.forEach((build) => {
         if (build.id === buildUuid) {
             build['pipeline-url'] = pipelineUrl;
-            let matches = pipelineUrl.match(/\/(\d+)$/);
+            console.log(`Set pipeline-url to ${pipelinUrl}!`);
+            let matches = pipelineUrl.match(/\/(\d+)\/?$/);
             if (matches !== null) {
                 build['pipeline-number'] = matches[1];
+                console.log(`Set pipeline-number to ${matches[1]}!`);
             } else {
                 build['pipeline-number'] = null;
+                console.log(`Set pipeline-number to null!`);
             }
         }
     });
