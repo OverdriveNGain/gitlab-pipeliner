@@ -5,6 +5,19 @@ function updateLatestBuildUrl() {
     console.log('updateLatestBuildUrl complete!');
 }
 
+function createConfirmRunButton() {
+    let debugButton = document.createElement('button');
+    debugButton.setAttribute('type', 'button');
+    debugButton.textContent = 'Confirm Run Debug';
+    debugButton.addEventListener('click', () => {
+        confirmPipelineRun();
+    });
+
+    document.querySelector('[data-testid="pipeline-container"]')
+        .parentElement
+        .insertAdjacentElement('afterend', debugButton);
+}
+
 function pipelineProgressPageIsFresh() {
     console.log('pipelineProgressPageIsFresh running...');
     let repositoryName = document.querySelector('nav.breadcrumbs li:nth-last-child(3)').textContent.trim();
@@ -31,6 +44,7 @@ function confirmPipelineRun() {
 
 function pageIsPipelineProgress() {
     console.log('pageIsPipelineProgress running...');
+    createConfirmRunButton();
     let value = location.href.startsWith('https://gitlab') 
         && /\d+\/?$/.test(location.href);
     console.log(`pageIsPipelineProgress complete (${value})!`);

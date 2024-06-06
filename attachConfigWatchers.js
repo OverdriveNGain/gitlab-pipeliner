@@ -55,19 +55,6 @@ function createFakeRunPipelineButton() {
         .insertAdjacentElement('afterend', debugButton);
 }
 
-function createConfirmRunButton() {
-    let debugButton = document.createElement('button');
-    debugButton.setAttribute('type', 'button');
-    debugButton.textContent = 'Confirm Run Debug';
-    debugButton.addEventListener('click', () => {
-        confirmPipelineRun();
-    });
-
-    document.querySelector('[data-testid="run-pipeline-button"]')
-        .parentElement
-        .insertAdjacentElement('afterend', debugButton);
-}
-
 function createViewBuildsButton() {
     let debugButton = document.createElement('a');
     debugButton.setAttribute('href', `extension://${chrome.runtime.id}/allBuilds.html`);
