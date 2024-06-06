@@ -11,8 +11,12 @@
         "attachConfigWatchers.js",
         "confirmPipelineRun.js",
         "storage.js",
+        "popup.js",
         "content.js"
       ]
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "allBuilds.html"
+  }
 }
