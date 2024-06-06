@@ -7,7 +7,7 @@ async function main(){
         attachConfigWatchers();
     }
     else if (pageIsPipelineProgress()) {
-        if (pipelineProgressPageIsFresh())
+        if (latestBuildHasNoLink() && pipelineProgressPageIsFresh())
             confirmPipelineRun();
         attemptInjectionConfig();
     }

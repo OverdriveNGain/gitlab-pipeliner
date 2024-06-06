@@ -38,6 +38,14 @@ async function injectBuildConfigData(build) {
     }
 }
 
+function latestBuildHasNoLink() {
+    console.log('latestBuildHasNoLink running...');
+    let latestBuild = fetchLatestBuild();
+    let value = latestBuild['pipeline-url'] == null;
+    console.log(`latestBuildHasNoLink complete (${value})!`);
+    return value;
+}
+
 function attemptInjectionConfig() {
     console.log('attemptInjectionConfig running...');
 

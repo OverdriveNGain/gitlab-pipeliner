@@ -26,12 +26,9 @@ function pipelineProgressPageIsFresh() {
     let branchName = document.querySelector('a.ref-container').text.trim();
     let latestBuild = fetchLatestBuild();
 
-    // let value = latestBuild['repository-name'] === repositoryName
-    //     && latestBuild['branch-name'] === branchName
-    //     && Date.now() - latestBuild['unix-timestamp'] < 600000;
     let value = latestBuild['repository-name'] === repositoryName
         && latestBuild['branch-name'] === branchName
-        && Date.now() - latestBuild['unix-timestamp'] < 600000;
+        && Date.now() - latestBuild['unix-timestamp'] < 60000;
     
     console.log(`${latestBuild['repository-name'] === repositoryName} && ${latestBuild['branch-name'] === branchName} && ${Date.now() - latestBuild['unix-timestamp'] < 600000}`);
     console.log(`pipelineProgressPageIsFresh complete (${value})!`);
