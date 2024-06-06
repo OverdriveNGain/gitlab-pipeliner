@@ -16,9 +16,6 @@ async function injectBuildConfigData(build) {
     let h2Element = document.createElement('h2');
     h2Element.textContent = 'Pipeline Parameters';
 
-    let retries = 5;
-    let cooldown = 2000;
-
     tabElement.insertAdjacentElement('beforeend', h2Element);
 
     if (tabElement) {
