@@ -23,11 +23,11 @@ function createConfirmRunButton() {
 function pipelineProgressPageIsFresh() {
     console.log('pipelineProgressPageIsFresh running...');
     let repositoryName = document.querySelector('nav.breadcrumbs li:nth-last-child(3)').textContent.trim();
-    let branchName = document.querySelector('a.ref-container').text.trim();
+    // let branchName = document.querySelector('a.ref-container').text.trim();
     let latestBuild = fetchLatestBuild();
 
     let value = latestBuild['repository-name'] === repositoryName
-        && latestBuild['branch-name'] === branchName
+        // && latestBuild['branch-name'] === branchName
         && Date.now() - latestBuild['unix-timestamp'] < 60000;
     
     console.log(`${latestBuild['repository-name'] === repositoryName} && ${latestBuild['branch-name'] === branchName} && ${Date.now() - latestBuild['unix-timestamp'] < 600000}`);
