@@ -30,7 +30,8 @@ function pipelineProgressPageIsFresh() {
         // && latestBuild['branch-name'] === branchName
         && Date.now() - latestBuild['unix-timestamp'] < 60000;
     
-    console.log(`${latestBuild['repository-name'] === repositoryName} && ${latestBuild['branch-name'] === branchName} && ${Date.now() - latestBuild['unix-timestamp'] < 600000}`);
+    // console.log(`${latestBuild['repository-name'] === repositoryName} && ${latestBuild['branch-name'] === branchName} && ${Date.now() - latestBuild['unix-timestamp'] < 600000}`);
+    console.log(`${latestBuild['repository-name'] === repositoryName} && ${Date.now() - latestBuild['unix-timestamp'] < 600000}`);
     console.log(`pipelineProgressPageIsFresh complete (${value})!`);
     return value;
 }
